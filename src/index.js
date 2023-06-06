@@ -4,7 +4,7 @@ import todoData from './modules/data';
 const ul = document.querySelector('.ul');
 
 function displayTask() {
-  todoData.forEach(data => {
+  todoData.forEach((data) => {
     const list = document.createElement('li');
     list.innerHTML = `
       <div><input type="checkbox" id="check">

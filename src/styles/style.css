@@ -1,0 +1,115 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #171723;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  width: 600px;
+  background-color: #fff;
+  box-shadow: 0 3px 10px rgba(243, 239, 239, 0.2);
+  padding: 0;
+  margin: 0;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 15px 15px;
+  background: #24273d;
+  color: #fff;
+}
+
+.card-body {
+  height: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.card-body .form-field {
+  padding: 15px 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.card-body .form-field i {
+  color: #171723;
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.form input {
+  width: 100%;
+  font-size: 16px;
+  font-style: italic;
+  border: none;
+}
+
+.form input:focus {
+  outline: none;
+}
+
+ul {
+  /* padding: 15px 15px; */
+  list-style-type: none;
+}
+
+ul li {
+  border-bottom: 1px solid #ccc;
+  padding: 15px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+ul li div {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 15px 15px;
+  background: #09ba09;
+}
+
+button {
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  background: none;
+  margin: auto;
+  color: #fff;
+  font-weight: 600;
+}
+
+button:active {
+  transform: scale(0.9);
+}

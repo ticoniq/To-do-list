@@ -3,13 +3,17 @@ import todoData from './modules/data';
 
 const ul = document.querySelector('.ul');
 
-todoData.forEach(data => {
-  const li = document.createElement('li');
-  li.innerHTML = `
-    <div><input type="checkbox" id="check">
-      <p>${data.description}</p>
-    </div>
-    <i class="fas fa-ellipsis-v"></i>
-  `;
-  ul.appendChild(li);
-});
+function displayTask() {
+  todoData.forEach(data => {
+    const list = document.createElement('li');
+    list.innerHTML = `
+      <div><input type="checkbox" id="check">
+        <p>${data.description}</p>
+      </div>
+      <i class="fas fa-ellipsis-v"></i>
+    `;
+    ul.appendChild(list);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', displayTask);

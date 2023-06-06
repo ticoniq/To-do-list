@@ -48,7 +48,7 @@
 <!-- Live Demo -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-<a href="https://webpack-starter-woad.vercel.app/"> See Project 🚀</a>
+<!-- <a href="https://webpack-starter-woad.vercel.app/"> See Project 🚀</a> -->
 
 <!-- GETTING STARTED -->
 

@@ -12,6 +12,7 @@
   - [Install](#install)
   - [Usage](#usage)
 - [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
@@ -122,6 +123,18 @@ Example command:
 - GitHub: [@ticoniq](https://github.com/ticoniq)
 - Twitter: [@ticoniq_](https://twitter.com/ticoniq_)
 - LinkedIn: [ticoniq](https://linkedin.com/in/ticoniq)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- > Describe 1 - 3 features you will add to the project. -->
+
+- [ ] **Additional pages: More pages will be added to the project to display additional content.**
+- [ ] **Responsive design: The project will be optimized to display properly on different screen sizes, including desktops, tablets, and mobile devices.**
+- [ ] **JavaScript interactivity: Some interactive features will be added using JavaScript to enhance the user experience.**
+- [ ] **Add and display task from localStorage**
+- [ ] **Delete task from localStorage**
+- [ ] **Mark tasks as completed**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

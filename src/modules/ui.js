@@ -164,14 +164,14 @@ class UI {
   }
 
   static clearCompletedTasks() {
-    // const todoData = UI.getItem();
+    const todoData = UI.getItem();
     const ui = new UI();
 
     // Filter out completed tasks
-    // const incompleteTasks = todoData.filter((todo) => !todo.completed);
+    const incompleteTasks = todoData.filter((todo) => !todo.completed);
 
     // Update localStorage with incomplete tasks
-    // localStorage.setItem('todoData', JSON.stringify(incompleteTasks));
+    localStorage.setItem('todoData', JSON.stringify(incompleteTasks));
 
     // Remove completed tasks from the UI
     const completedTasks = document.querySelectorAll('.completed');

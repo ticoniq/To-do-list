@@ -121,7 +121,7 @@ class UI {
       }
 
       // Update the task in the localStorage
-      // UI.updateTaskInLocalStorage(newTodo.index, newTodo);
+      UI.updateTaskInLocalStorage(newTodo.index, newTodo);
     });
 
     // Add event listener to delete icon

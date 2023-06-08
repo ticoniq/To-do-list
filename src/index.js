@@ -17,7 +17,7 @@ form.addEventListener('submit', (e) => {
   if (newId.length > 0) {
     index = newId[newId.length - 1].index + 1;
   } else {
-    index = 0;
+    index = 1;
   }
 
   const completed = false;

@@ -145,9 +145,11 @@ class UI {
 
   static updateTaskInLocalStorage(taskId, updatedTodo) {
     const todoData = UI.getItem();
-    const updatedData = todoData.filter((todo) => todo.index !== taskId);
-    updatedData.push(updatedTodo);
-    localStorage.setItem('todoData', JSON.stringify(updatedData));
+    const taskIndex = todoData.findIndex((todo) => todo.index === taskId);
+    if (taskIndex !== -1) {
+      todoData[taskIndex] = updatedTodo;
+      localStorage.setItem('todoData', JSON.stringify(todoData));
+    }
   }
 
   static deleteTaskFromLocalStorage(taskId) {

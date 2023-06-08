@@ -6,8 +6,10 @@ const handleStatusUpdate = () => {
   ul.addEventListener('change', (e) => {
     if (e.target.classList.contains('check')) {
       const taskId = e.target.id;
-      const todoData = UI.getItem();
-      const updatedTodoData = todoData.map((todo) => {
+      let todoData = UI.getItem();
+
+      // Filter out the task with the specified taskId and update its completed status
+      todoData = todoData.filter((todo) => {
         if (todo.index === taskId) {
           todo.completed = e.target.checked;
         }
@@ -15,7 +17,7 @@ const handleStatusUpdate = () => {
       });
 
       // Update the task in the localStorage
-      localStorage.setItem('todoData', JSON.stringify(updatedTodoData));
+      localStorage.setItem('todoData', JSON.stringify(todoData));
 
       // Update the completed class on the input element
       const input = e.target.nextElementSibling;

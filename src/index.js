@@ -1,6 +1,7 @@
 import './styles/style.css';
 import Todo from './modules/data';
 import UI from './modules/ui';
+import handleStatusUpdate from './modules/statusUpdates';
 
 const ui = new UI();
 const form = document.querySelector('.form');
@@ -16,7 +17,7 @@ form.addEventListener('submit', (e) => {
   if (newId.length > 0) {
     index = newId[newId.length - 1].index + 1;
   } else {
-    index = 0;
+    index = 1;
   }
 
   const completed = false;
@@ -42,3 +43,5 @@ form.addEventListener('submit', (e) => {
 
 // Clear all task
 clearBtn.addEventListener('click', UI.clearCompletedTasks);
+
+handleStatusUpdate();

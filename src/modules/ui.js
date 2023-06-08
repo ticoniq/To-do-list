@@ -154,24 +154,29 @@ class UI {
 
   static deleteTaskFromLocalStorage(taskId) {
     const ui = new UI();
-    const todoData = UI.getItem();
-    const taskIndex = todoData.findIndex((todo) => todo.index === taskId);
-    if (taskIndex !== -1) {
-      todoData.splice(taskIndex, 1);
-      localStorage.setItem('todoData', JSON.stringify(todoData));
-    }
+    let todoData = UI.getItem();
+    // Filter out the task to be deleted and update the index of remaining tasks
+    todoData = todoData.filter((todo) => todo.index !== taskId).map((todo, index) => {
+      todo.index = index + 1;
+      return todo;
+    });
+    // Update the localStorage with the updated todoData
+    localStorage.setItem('todoData', JSON.stringify(todoData));
     ui.errorMsg('Success', 'rgba(9, 186, 9, 0.5)');
   }
 
   static clearCompletedTasks() {
-    const todoData = UI.getItem();
     const ui = new UI();
+    let todoData = UI.getItem();
 
-    // Filter out completed tasks
-    const incompleteTasks = todoData.filter((todo) => !todo.completed);
+    // Filter out completed tasks and update the index of remaining tasks
+    todoData = todoData.filter((todo) => !todo.completed).map((todo, index) => {
+      todo.index = index + 1;
+      return todo;
+    });
 
-    // Update localStorage with incomplete tasks
-    localStorage.setItem('todoData', JSON.stringify(incompleteTasks));
+    // Update the localStorage with the incomplete tasks
+    localStorage.setItem('todoData', JSON.stringify(todoData));
 
     // Remove completed tasks from the UI
     const completedTasks = document.querySelectorAll('.completed');

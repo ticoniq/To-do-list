@@ -1,3 +1,5 @@
+import { updateItemInLocalStorage, deleteNow } from './storage';
+
 class UI {
   errorMsg(message, color) {
     this.message = message;
@@ -11,7 +13,7 @@ class UI {
     }, 3000);
   }
 
-  static getItem() {
+  static getItems() {
     let todoData;
     if (localStorage.getItem('todoData') === null) {
       todoData = [];
@@ -71,37 +73,21 @@ class UI {
       newTodo.description = newInput.value;
 
       // Update the task in the localStorage
-      UI.updateTaskInLocalStorage(newTodo.index, newTodo);
+      updateItemInLocalStorage(newTodo.index, newTodo);
     });
 
     newInput.addEventListener('focusin', () => {
       const allListItems = document.querySelectorAll('.ul li');
       allListItems.forEach((item) => {
-        if (item === list) {
-          item.classList.add('active');
-          const trashIcon = item.querySelector('.fa-trash-alt');
-          const ellipsisIcon = item.querySelector('.fa-ellipsis-v');
-          trashIcon.classList.remove('hidden');
-          ellipsisIcon.classList.add('hidden');
-        }
-      });
-
-      // Check if the 'active' class is removed
-      if (list.classList.contains('active')) {
+        item.classList.add('active');
+        const trashIcon = item.querySelector('.fa-trash-alt');
+        const ellipsisIcon = item.querySelector('.fa-ellipsis-v');
         trashIcon.classList.remove('hidden');
         ellipsisIcon.classList.add('hidden');
-      }
-    });
-
-    newInput.addEventListener('focusout', () => {
-      const allListItems = document.querySelectorAll('.ul li');
-      allListItems.forEach((item) => {
-        if (item !== list) {
-          item.classList.remove('active');
-          const trashIcon = item.querySelector('.fa-trash-alt');
-          const ellipsisIcon = item.querySelector('.fa-ellipsis-v');
-          trashIcon.classList.add('hidden');
-          ellipsisIcon.classList.remove('hidden');
+        if (item === list) {
+          item.classList.add('active');
+          trashIcon.classList.remove('hidden');
+          ellipsisIcon.classList.add('hidden');
         }
       });
     });
@@ -121,7 +107,7 @@ class UI {
       }
 
       // Update the task in the localStorage
-      UI.updateTaskInLocalStorage(newTodo.index, newTodo);
+      updateItemInLocalStorage(newTodo.index, newTodo);
     });
 
     // Add event listener to delete icon
@@ -132,67 +118,7 @@ class UI {
       ul.removeChild(list);
 
       // Remove the task from the localStorage
-      UI.deleteTaskFromLocalStorage(taskId);
-    });
-  }
-
-  static addToLocalStorage(newTodo) {
-    this.newTodo = newTodo;
-    const todoData = UI.getItem();
-    todoData.push(newTodo);
-    localStorage.setItem('todoData', JSON.stringify(todoData));
-  }
-
-  static updateTaskInLocalStorage(taskId, updatedTodo) {
-    const todoData = UI.getItem();
-    const taskIndex = todoData.findIndex((todo) => todo.index === taskId);
-    if (taskIndex !== -1) {
-      todoData[taskIndex] = updatedTodo;
-      localStorage.setItem('todoData', JSON.stringify(todoData));
-    }
-  }
-
-  static deleteTaskFromLocalStorage(taskId) {
-    const ui = new UI();
-    let todoData = UI.getItem();
-    // Filter out the task to be deleted and update the index of remaining tasks
-    todoData = todoData.filter((todo) => todo.index !== taskId).map((todo, index) => {
-      todo.index = index + 1;
-      return todo;
-    });
-    // Update the localStorage with the updated todoData
-    localStorage.setItem('todoData', JSON.stringify(todoData));
-    ui.errorMsg('Success', 'rgba(9, 186, 9, 0.5)');
-  }
-
-  static clearCompletedTasks() {
-    const ui = new UI();
-    let todoData = UI.getItem();
-
-    // Filter out completed tasks and update the index of remaining tasks
-    todoData = todoData.filter((todo) => !todo.completed).map((todo, index) => {
-      todo.index = index + 1;
-      return todo;
-    });
-
-    // Update the localStorage with the incomplete tasks
-    localStorage.setItem('todoData', JSON.stringify(todoData));
-
-    // Remove completed tasks from the UI
-    const completedTasks = document.querySelectorAll('.completed');
-    completedTasks.forEach((task) => {
-      const listItem = task.closest('li');
-      listItem.parentNode.removeChild(listItem);
-    });
-
-    ui.errorMsg('Success', 'rgba(9, 186, 9, 0.5)');
-  }
-
-  static displayFromLocalStorage() {
-    const ui = new UI();
-    const todoList = UI.getItem();
-    todoList.forEach((todo) => {
-      ui.displayTask(todo);
+      deleteNow(taskId);
     });
   }
 }

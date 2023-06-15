@@ -43,7 +43,6 @@ const deleteNow = (taskId) => {
   });
   // Update the localStorage with the updated todoData
   localStorage.setItem('todoList', JSON.stringify(todoData));
-  errorMsg('Success', 'rgba(9, 186, 9, 0.5)');
 };
 
 const clearCompletedTasks = () => {
@@ -68,9 +67,8 @@ const clearCompletedTasks = () => {
   errorMsg('Success', 'rgba(9, 186, 9, 0.5)');
 };
 
-const ul = document.querySelector('.ul');
-
 const handleStatusUpdate = () => {
+  const ul = document.querySelector('.ul');
   ul.addEventListener('change', (e) => {
     if (e.target.classList.contains('check')) {
       const taskId = e.target.id;

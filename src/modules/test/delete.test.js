@@ -26,7 +26,7 @@ describe('deleteNow function', () => {
     const taskId = 2;
     deleteNow(taskId);
 
-    // Verify that the task is deleted and the index is updated
+    // Verify that the task is deleted and the index is update
     const expectedTodoData = [
       { index: 1, description: 'Task 1' },
       { index: 2, description: 'Task 3' },

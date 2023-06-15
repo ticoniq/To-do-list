@@ -63,8 +63,6 @@ const clearCompletedTasks = () => {
     const listItem = task.closest('li');
     listItem.parentNode.removeChild(listItem);
   });
-
-  errorMsg('Success', 'rgba(9, 186, 9, 0.5)');
 };
 
 const handleStatusUpdate = () => {

@@ -1,4 +1,4 @@
-// import { deleteNow } from '../storage';
+import { deleteNow } from '../storage';
 
 describe('deleteNow function', () => {
   beforeEach(() => {

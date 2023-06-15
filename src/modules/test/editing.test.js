@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { JSDOM } from 'jsdom';
-import { updateItemInLocalStorage } from '../storage';
 
 describe('Test edit and complete status', () => {
   let dom;
@@ -32,15 +31,15 @@ describe('Test edit and complete status', () => {
   });
 
   // Tests that the input event triggers updateItemInLocalStorage with the correct parameters.
-  it("test_input_event_triggers", () => {
+  it('test_input_event_triggers', () => {
     const input = document.createElement('input');
     input.classList.add('edit');
     document.body.appendChild(input);
-    
+
     const event = document.createEvent('Event');
     event.initEvent('input', true, true);
     Object.defineProperty(event, 'target', { value: input, enumerable: true });
-    
+
     input.dispatchEvent(event);
     expect(input).toBeDefined();
   });
